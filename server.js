@@ -24,7 +24,10 @@ app.listen(3000 , () => {
     console.log('server is listening on port 3000');
 });
 app.get('/' , (req , res) => {
-    res.status(200).render('homepage');
+    res.status(200).render('start');
+});
+app.get('/main' , (req , res) => {
+    res.status(200).render('main');
 });
 app.post('/ans' , (req , res) => {
     const userName = req.body.username;
