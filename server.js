@@ -1,6 +1,6 @@
-// const { query } = require('express');
-const bodyParser = require('body-parser');
+// const { query } = require('express')
 const express = require('express');
+const bodyParser = require('body-parser');
 // const res = require('express/lib/response');
 // const { isObjectIdOrHexString } = require('mongoose');
 // const db = require('./mongoConnect');
@@ -8,6 +8,7 @@ const express = require('express');
 const app = express();
 
 app.set('view engine' , 'ejs');
+app.use(bodyParser.urlencoded({extended: true}));
 
 // class User{
 //     constructor(userName , password)
@@ -24,7 +25,7 @@ app.listen(3000 , () => {
     console.log('server is listening on port 3000');
 });
 app.get('/' , (req , res) => {
-    res.status(200).render('homepage');
+    res.status(200).render('start');
 });
 app.post('/ans' , (req , res) => {
     const userName = req.body.username;
@@ -34,7 +35,7 @@ app.post('/ans' , (req , res) => {
 app.get('/login' , (req , res) => {
     res.status(200).render('login');
 });
-// app.use((req , res) => {
-//     res.status(404).send("404 page");
-// });
+app.use((req , res) => {
+    res.status(404).send("404 page");
+});
 
